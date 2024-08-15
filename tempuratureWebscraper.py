@@ -18,6 +18,10 @@ def getTempBlacksVa()->int:
 
     return temp
 
+#Initial Checkup:
+blackTemp = getTempBlacksVa()
+print(blackTemp)
+
 #Loop to check temp every few minutes
 while True:
     #currently set to 5 minutes:
@@ -25,5 +29,5 @@ while True:
     blackTemp = getTempBlacksVa()
     print(blackTemp)
     #TODO:
-    #write int blackTemp to a file that
+    #write int blackTemp to a file that the webserver can see
 
