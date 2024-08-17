@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import time
+import os
 
 
 def getTempBlacksVa()->int:
@@ -18,16 +19,32 @@ def getTempBlacksVa()->int:
 
     return temp
 
+def tempToText(temp):
+    #setting up file system:
+    
+    cwd = os.getcwd()
+    #to be changed later
+    cwd = os.path.join(cwd, "code", "python", "tempBlacksBurgVa", "updatingFile", "temp.txt")
+    file = open(cwd, "w")
+    file.write(str(temp))
+    file.close()
+
+
+
+
 #Initial Checkup:
 blackTemp = getTempBlacksVa()
 print(blackTemp)
+tempToText(blackTemp)
 
 #Loop to check temp every few minutes
 while True:
     #currently set to 5 minutes:
-    time.sleep(5*60)
+    time.sleep(10)
     blackTemp = getTempBlacksVa()
     print(blackTemp)
     #TODO:
     #write int blackTemp to a file that the webserver can see
+    tempToText(blackTemp)
+
 
